@@ -24,7 +24,7 @@ export const useAxios = () => {
       setLoading(false);
       return;
     }
-  }, [request, setLoading]);
+  }, [request, setCsrfToken, setError, setLoading]);
 
   useEffect(() => {
     getCSRF();
