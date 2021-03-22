@@ -24,7 +24,7 @@ export const useAxios = () => {
       setLoading(false);
       return;
     }
-  }, [request]);
+  }, [request, setLoading]);
 
   useEffect(() => {
     getCSRF();
