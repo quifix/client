@@ -1,2 +1,3 @@
-import store from './store';
+import store, { RootState } from './store';
 export default store;
+export type { RootState };
