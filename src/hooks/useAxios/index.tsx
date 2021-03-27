@@ -57,10 +57,12 @@ export const useAuthAxios = () => {
         authAxios.defaults.headers['Authorization'] = accessToken
           ? `Bearer ${accessToken}`
           : null;
+
         const { data }: { data: User } = await authAxios.post(
           '/api/authenticate',
           user
         );
+
         setViewer(data);
       }
     } catch (error) {
@@ -74,12 +76,12 @@ export const useAuthAxios = () => {
       getAcessToken();
       getProfile();
 
-      if (!csrfToken) {
-        getCSRFToken();
-        authAxios.defaults.headers['X-CSRF-Token'] = csrfToken
-          ? csrfToken
-          : null;
-      }
+      // if (!csrfToken) {
+      //   getCSRFToken();
+      //   authAxios.defaults.headers['X-CSRF-Token'] = csrfToken
+      //     ? csrfToken
+      //     : null;
+      // }
 
       if (accessToken && user) {
         authAxios.defaults.headers['content-type'] = 'application/json';

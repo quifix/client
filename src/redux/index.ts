@@ -1,3 +1,5 @@
-import store, { RootState } from './store';
+import store, { AppDispatch, RootState } from './store';
 export default store;
-export type { RootState };
+export type { AppDispatch, RootState };
+export * from './hooks';
+export * from './features';

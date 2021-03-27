@@ -1,17 +1,22 @@
-import {
-  combineReducers,
-  configureStore,
-  // getDefaultMiddleware,
-  Reducer
-} from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import store from '.';
-// import logger from 'redux-logger';
+import logger from 'redux-logger';
+import { projectReducer } from './features';
 
-const rootReducer: Reducer = combineReducers({});
+const { reducer: project } = projectReducer;
+
+const middleware =
+  process.env.NODE_ENV === 'development'
+    ? [...getDefaultMiddleware(), logger]
+    : [...getDefaultMiddleware()];
 
 export default configureStore({
-  reducer: rootReducer,
+  reducer: {
+    project
+  },
+  middleware,
   devTools: process.env.NODE_ENV === 'development' ? true : false
 });
 
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
